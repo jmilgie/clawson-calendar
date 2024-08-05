@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/clawson-calendar/static/css/main.4299789f.css",
+    "main.js": "/clawson-calendar/static/js/main.996ba545.js",
+    "static/js/453.7e906cad.chunk.js": "/clawson-calendar/static/js/453.7e906cad.chunk.js",
+    "index.html": "/clawson-calendar/index.html",
+    "main.4299789f.css.map": "/clawson-calendar/static/css/main.4299789f.css.map",
+    "main.996ba545.js.map": "/clawson-calendar/static/js/main.996ba545.js.map",
+    "453.7e906cad.chunk.js.map": "/clawson-calendar/static/js/453.7e906cad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4299789f.css",
+    "static/js/main.996ba545.js"
+  ]
+}
