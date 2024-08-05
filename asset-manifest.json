@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/clawson-calendar/static/css/main.c295bcab.css",
-    "main.js": "/clawson-calendar/static/js/main.a91127ec.js",
+    "main.css": "/clawson-calendar/static/css/main.03410879.css",
+    "main.js": "/clawson-calendar/static/js/main.ab427be5.js",
     "static/js/453.7e906cad.chunk.js": "/clawson-calendar/static/js/453.7e906cad.chunk.js",
     "index.html": "/clawson-calendar/index.html",
-    "main.c295bcab.css.map": "/clawson-calendar/static/css/main.c295bcab.css.map",
-    "main.a91127ec.js.map": "/clawson-calendar/static/js/main.a91127ec.js.map",
+    "main.03410879.css.map": "/clawson-calendar/static/css/main.03410879.css.map",
+    "main.ab427be5.js.map": "/clawson-calendar/static/js/main.ab427be5.js.map",
     "453.7e906cad.chunk.js.map": "/clawson-calendar/static/js/453.7e906cad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c295bcab.css",
-    "static/js/main.a91127ec.js"
+    "static/css/main.03410879.css",
+    "static/js/main.ab427be5.js"
   ]
 }
