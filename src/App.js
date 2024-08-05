@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Calendar, Heart, Sun, Leaf, Umbrella, Book, Music, Car, Star, Snowflake, Flag, School, Ghost, ChevronLeft, ChevronRight, Thermometer, Droplets } from 'lucide-react';
 
 const months = [
@@ -14,27 +14,18 @@ const weatherData = [
 ];
 
 const themes = [
-  { name: "Winter Wonderland", icon: <Snowflake className="w-8 h-8" />, gradient: "from-blue-700 to-indigo-900", cellColor: "bg-blue-50", season: "winter" },
-  { name: "Valentine's Day", icon: <Heart className="w-8 h-8" />, gradient: "from-pink-700 to-red-900", cellColor: "bg-pink-50", season: "winter" },
-  { name: "Spring Awakening", icon: <Leaf className="w-8 h-8" />, gradient: "from-green-700 to-emerald-900", cellColor: "bg-green-50", season: "spring" },
-  { name: "April Showers", icon: <Umbrella className="w-8 h-8" />, gradient: "from-blue-700 to-purple-900", cellColor: "bg-purple-50", season: "spring" },
-  { name: "May Flowers", icon: <Leaf className="w-8 h-8" />, gradient: "from-yellow-700 to-orange-900", cellColor: "bg-yellow-50", season: "spring" },
-  { name: "Summer Fun", icon: <Sun className="w-8 h-8" />, gradient: "from-orange-700 to-red-900", cellColor: "bg-orange-50", season: "summer" },
-  { name: "Independence", icon: <Flag className="w-8 h-8" />, gradient: "from-red-700 to-blue-900", cellColor: "bg-red-50", season: "summer" },
-  { name: "Beach Days", icon: <Sun className="w-8 h-8" />, gradient: "from-cyan-700 to-blue-900", cellColor: "bg-cyan-50", season: "summer" },
-  { name: "Back to School", icon: <School className="w-8 h-8" />, gradient: "from-purple-700 to-indigo-900", cellColor: "bg-indigo-50", season: "fall" },
-  { name: "Autumn Leaves", icon: <Leaf className="w-8 h-8" />, gradient: "from-yellow-700 to-red-900", cellColor: "bg-amber-50", season: "fall" },
-  { name: "Harvest Time", icon: <Leaf className="w-8 h-8" />, gradient: "from-orange-700 to-amber-900", cellColor: "bg-orange-100", season: "fall" },
-  { name: "Holiday Cheer", icon: <Star className="w-8 h-8" />, gradient: "from-red-700 to-green-900", cellColor: "bg-red-50", season: "winter" }
-];
-
-const eventColors = [
-  "bg-blue-200 text-blue-800 border-blue-400",
-  "bg-green-200 text-green-800 border-green-400",
-  "bg-yellow-200 text-yellow-800 border-yellow-400",
-  "bg-purple-200 text-purple-800 border-purple-400",
-  "bg-pink-200 text-pink-800 border-pink-400",
-  "bg-indigo-200 text-indigo-800 border-indigo-400",
+  { name: "Winter Wonderland", icon: <Snowflake className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-blue-700 to-indigo-900", cellColor: "bg-blue-50", season: "winter" },
+  { name: "Valentine's Day", icon: <Heart className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-pink-700 to-red-900", cellColor: "bg-pink-50", season: "winter" },
+  { name: "Spring Awakening", icon: <Leaf className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-green-700 to-emerald-900", cellColor: "bg-green-50", season: "spring" },
+  { name: "April Showers", icon: <Umbrella className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-blue-700 to-purple-900", cellColor: "bg-purple-50", season: "spring" },
+  { name: "May Flowers", icon: <Leaf className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-yellow-700 to-orange-900", cellColor: "bg-yellow-50", season: "spring" },
+  { name: "Summer Fun", icon: <Sun className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-orange-700 to-red-900", cellColor: "bg-orange-50", season: "summer" },
+  { name: "Independence", icon: <Flag className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-red-700 to-blue-900", cellColor: "bg-red-50", season: "summer" },
+  { name: "Beach Days", icon: <Sun className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-cyan-700 to-blue-900", cellColor: "bg-cyan-50", season: "summer" },
+  { name: "Back to School", icon: <School className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-purple-700 to-indigo-900", cellColor: "bg-indigo-50", season: "fall" },
+  { name: "Autumn Leaves", icon: <Leaf className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-yellow-700 to-red-900", cellColor: "bg-amber-50", season: "fall" },
+  { name: "Harvest Time", icon: <Leaf className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-orange-700 to-amber-900", cellColor: "bg-orange-100", season: "fall" },
+  { name: "Holiday Cheer", icon: <Star className="w-6 h-6 md:w-8 md:h-8" />, gradient: "from-red-700 to-green-900", cellColor: "bg-red-50", season: "winter" }
 ];
 
 const events = {
@@ -85,7 +76,7 @@ const getMoonPhase = (year, month, day) => {
   return ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"][b];
 };
 
-const MonthCalendar = ({ month, year, isPrintMode }) => {
+const MonthCalendar = ({ month, year }) => {
   const theme = themes[month];
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
@@ -97,7 +88,7 @@ const MonthCalendar = ({ month, year, isPrintMode }) => {
 
   const days = [];
   for (let i = 0; i < startingDay; i++) {
-    days.push(<div key={`empty-${i}`} className={`${theme.cellColor} border border-gray-300 p-2 h-32`}></div>);
+    days.push(<div key={`empty-${i}`} className={`${theme.cellColor} border border-gray-300 p-1 h-16 md:h-32`}></div>);
   }
 
   for (let i = 1; i <= daysInMonth; i++) {
@@ -107,57 +98,60 @@ const MonthCalendar = ({ month, year, isPrintMode }) => {
     const moonPhase = getMoonPhase(year, month + 1, i);
 
     days.push(
-      <div key={i} className={`${theme.cellColor} border border-gray-300 p-2 h-32 overflow-y-auto relative group ${isToday && !isPrintMode ? 'ring-4 ring-blue-500' : ''}`}>
+      <div key={i} className={`${theme.cellColor} border border-gray-300 p-1 h-16 md:h-32 overflow-hidden relative ${isToday ? 'ring-2 ring-blue-500' : ''}`}>
         <div className="flex justify-between items-start">
-          <div className={`w-6 h-6 flex items-center justify-center rounded-full ${isToday && !isPrintMode ? 'bg-blue-500 text-white' : 'bg-white text-gray-800'}`}>
-            <span className="text-sm font-bold">{i}</span>
+          <div className={`w-6 h-6 flex items-center justify-center rounded-full ${isToday ? 'bg-blue-500 text-white' : 'text-gray-800'}`}>
+            <span className="text-xs md:text-sm font-bold">{i}</span>
           </div>
-          <div className="text-sm">{moonPhase}</div>
+          <div className="text-xs md:text-sm">{moonPhase}</div>
         </div>
         {dayEvents.length > 0 && (
-          <div className="mt-2 space-y-1">
+          <div className="mt-1 space-y-1 hidden md:block">
             {dayEvents.map((event, index) => (
               <div
                 key={index}
-                className={`${eventColors[index % eventColors.length]} rounded-md px-2 py-1 text-xs border ${isPrintMode ? 'print:text-[6px]' : 'cursor-pointer hover:shadow-md'}`}
-                onClick={() => !isPrintMode && setSelectedEvent({ event, date })}
+                className="bg-blue-200 text-blue-800 rounded-md px-1 py-0.5 text-xs cursor-pointer hover:bg-blue-300"
+                onClick={() => setSelectedEvent({ event, date })}
               >
                 {event}
               </div>
             ))}
           </div>
         )}
+        {dayEvents.length > 0 && (
+          <div className="w-2 h-2 bg-blue-500 rounded-full absolute bottom-1 right-1 md:hidden"></div>
+        )}
       </div>
     );
   }
 
   return (
-    <div className="mb-8">
-      <h2 className={`text-3xl font-bold mb-4 flex items-center justify-center p-6 rounded-t-lg bg-gradient-to-r ${theme.gradient} text-white`}>
+    <div className="mb-4 md:mb-8">
+      <h2 className={`text-xl md:text-3xl font-bold mb-2 md:mb-4 flex items-center justify-center p-3 md:p-6 rounded-t-lg bg-gradient-to-r ${theme.gradient} text-white`}>
         <span className="mr-2 animate-pulse">{theme.icon}</span>
         {months[month]} {year} - {theme.name}
         <span className="ml-2 animate-pulse">{theme.icon}</span>
       </h2>
-      <div className="grid grid-cols-7 gap-1 bg-white rounded-lg shadow-lg p-2">
+      <div className="grid grid-cols-7 gap-1 bg-white rounded-lg shadow-lg p-1 md:p-2">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-          <div key={day} className="font-bold text-center p-2 text-lg">{day}</div>
+          <div key={day} className="font-bold text-center p-1 md:p-2 text-xs md:text-lg">{day}</div>
         ))}
         {days}
       </div>
-      <div className={`mt-4 p-4 rounded-b-lg bg-gradient-to-r ${theme.gradient} text-white flex justify-between items-center`}>
-        <div className="flex items-center">
-          <Thermometer className="w-6 h-6 mr-2" />
-          <span>Avg. Temp: {weatherData[month].temp}°F</span>
+      <div className={`mt-2 md:mt-4 p-2 md:p-4 rounded-b-lg bg-gradient-to-r ${theme.gradient} text-white flex flex-col sm:flex-row justify-between items-start sm:items-center`}>
+        <div className="flex items-center mb-2 sm:mb-0">
+          <Thermometer className="w-4 h-4 mr-2" />
+          <span className="text-xs md:text-sm">Avg. Temp: {weatherData[month].temp}°F</span>
         </div>
         <div className="flex items-center">
-          <Droplets className="w-6 h-6 mr-2" />
-          <span>Avg. Precipitation: {weatherData[month].precip}"</span>
+          <Droplets className="w-4 h-4 mr-2" />
+          <span className="text-xs md:text-sm">Avg. Precipitation: {weatherData[month].precip}"</span>
         </div>
       </div>
-      {!isPrintMode && selectedEvent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full">
-            <h3 className="text-2xl font-bold mb-4">{selectedEvent.event}</h3>
+      {selectedEvent && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-4 md:p-6 rounded-lg shadow-xl max-w-md w-full">
+            <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-4">{selectedEvent.event}</h3>
             <p className="mb-4">Date: {selectedEvent.date}</p>
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
@@ -174,49 +168,30 @@ const MonthCalendar = ({ month, year, isPrintMode }) => {
 
 const ClawsonCalendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const [isPrintMode, setIsPrintMode] = useState(false);
-
-  useEffect(() => {
-    const handlePrint = () => {
-      setIsPrintMode(true);
-      setTimeout(() => {
-        window.print();
-        setIsPrintMode(false);
-      }, 100);
-    };
-
-    window.addEventListener('beforeprint', handlePrint);
-    return () => window.removeEventListener('beforeprint', handlePrint);
-  }, []);
 
   const nextMonth = () => setCurrentMonth((prev) => (prev + 1) % 12);
   const prevMonth = () => setCurrentMonth((prev) => (prev - 1 + 12) % 12);
 
   return (
-    <div className="max-w-7xl mx-auto my-8 bg-gradient-to-br from-blue-100 to-purple-100 p-8 rounded-xl shadow-2xl">
-      <h1 className="text-5xl font-bold flex items-center justify-center mb-8 text-blue-800">
-        <Calendar className="mr-4 w-16 h-16 text-blue-600" />
+    <div className="max-w-7xl mx-auto my-4 md:my-8 bg-gradient-to-br from-blue-100 to-purple-100 p-2 md:p-8 rounded-xl shadow-2xl">
+      <h1 className="text-2xl md:text-5xl font-bold flex items-center justify-center mb-4 md:mb-8 text-blue-800">
+        <Calendar className="mr-2 md:mr-4 w-8 h-8 md:w-16 md:h-16 text-blue-600" />
         Clawson 2024 Community Calendar
       </h1>
       <div className="flex justify-between items-center mb-4">
-        <button onClick={prevMonth} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          <ChevronLeft className="w-6 h-6" />
+        <button onClick={prevMonth} className="bg-blue-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-full hover:bg-blue-600">
+          <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
         </button>
-        <button onClick={nextMonth} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          <ChevronRight className="w-6 h-6" />
+        <button onClick={nextMonth} className="bg-blue-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-full hover:bg-blue-600">
+          <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
         </button>
       </div>
-      <MonthCalendar month={currentMonth} year={2024} isPrintMode={isPrintMode} />
-      <div className="mt-8 text-center text-gray-700">
-        <p className="text-lg">Visit www.cityofclawson.com for more information on events</p>
-        <p className="font-bold mt-4 text-3xl text-blue-600">
+      <MonthCalendar month={currentMonth} year={2024} />
+      <div className="mt-4 md:mt-8 text-center text-gray-700">
+        <p className="text-sm md:text-lg">Visit www.cityofclawson.com for more information on events</p>
+        <p className="font-bold mt-2 md:mt-4 text-xl md:text-3xl text-blue-600">
           "Little City with a Big Heart"
         </p>
-        <div className="mt-4 print:hidden">
-          <button onClick={() => window.print()} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-            Print Calendar
-          </button>
-        </div>
       </div>
     </div>
   );
